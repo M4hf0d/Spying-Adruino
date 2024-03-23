@@ -1,0 +1,8 @@
+Django==4.2.7
+djangorestframework==3.14.0
+django-jazzmin==2.6.0
+drf-yasg==1.21.7
+drf-writable-nested==0.7.0
+django-filter==23.5
+django-cors-headers==4.3.1
+django-model-utils==4.4.0
