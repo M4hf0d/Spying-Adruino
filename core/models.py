@@ -12,3 +12,5 @@ class GPSData(models.Model):
 class Data(models.Model):
     cid = models.IntegerField(default=0, blank = True, null = True)
     message = models.TextField(max_length=900, blank = True, null = True)
+    def __str__(self) :
+        return f'{self.cid}, {self.message}'
