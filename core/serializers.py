@@ -9,4 +9,4 @@ class GPSDataSerializer(serializers.ModelSerializer):
 class DataSerializer(serializers.ModelSerializer):
     class Meta:
         model = Data
-        fields = ['id', 'message']
+        fields = ['cid', 'message']
