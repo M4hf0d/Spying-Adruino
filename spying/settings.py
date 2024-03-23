@@ -27,8 +27,52 @@ DEBUG = True
 CORS_ALLOW_ALL_ORIGINS = True
 ALLOWED_HOSTS = ['*']
 
+CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://c5e0-154-121-91-43.ngrok-free.app',
+    'https://spying-adruino-production.up.railway.app'
+]
 
 
+CORS_ALLOWED_ORIGINS = [
+    "https://c5e0-154-121-91-43.ngrok-free.app1",
+    "https://spying-adruino-production.up.railway.app",
+    "http://127.0.0.1:3000"
+]
+
+CORS_ORIGIN_WHITELIST = [
+     "https://spying-adruino-production.up.railway.app",
+    "https://c5e0-154-121-91-43.ngrok-free.app",
+]
+
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL = True
+
+
+CORS_ALLOW_CREDENTIALS= True
+CORS_ALLOW_METHODS = [
+'DELETE',
+'GET',
+'OPTIONS',
+'PATCH',
+'POST',
+'PUT',
+]
+
+
+CORS_ALLOW_HEADERS = [
+'accept',
+'accept-encoding',
+'authorization',
+'content-type',
+'dnt',
+'origin',
+'user-agent',
+'x-csrftoken',
+'x-requested-with',
+]
 # Application definition
 
 DJANGO_APPS  = [
