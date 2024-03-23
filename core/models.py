@@ -10,5 +10,5 @@ class GPSData(models.Model):
     
 
 class Data(models.Model):
-    id = models.IntegerField(default=0, blank = True, null = True)
+    cid = models.IntegerField(default=0, blank = True, null = True)
     message = models.TextField(max_length=900, blank = True, null = True)
