@@ -1,1 +1,1 @@
-web: python manage.py makemigrations && python manage.py migrate && gunicorn spying.wsgi:application --bind 0.0.0.0:$PORT
+web: python manage.py makemigrations && python manage.py migrate && mkdir static && gunicorn spying.wsgi:application --bind 0.0.0.0:$PORT
