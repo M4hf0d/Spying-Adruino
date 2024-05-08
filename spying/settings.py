@@ -32,18 +32,21 @@ CORS_ALLOW_ALL_ORIGINS = True
 CSRF_TRUSTED_ORIGINS = [
     'https://c5e0-154-121-91-43.ngrok-free.app',
     'https://spying-adruino-production.up.railway.app'
+    'https://web-production-39ae.up.railway.app',
 ]
 
 
 CORS_ALLOWED_ORIGINS = [
     "https://c5e0-154-121-91-43.ngrok-free.app1",
     "https://spying-adruino-production.up.railway.app",
-    "http://127.0.0.1:3000"
+    "http://127.0.0.1:3000",
+    "https://web-production-39ae.up.railway.app",
 ]
 
 CORS_ORIGIN_WHITELIST = [
      "https://spying-adruino-production.up.railway.app",
     "https://c5e0-154-121-91-43.ngrok-free.app",
+    "https://web-production-39ae.up.railway.app",
 ]
 
 
