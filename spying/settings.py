@@ -31,10 +31,9 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
     'https://c5e0-154-121-91-43.ngrok-free.app',
-    'https://spying-adruino-production.up.railway.app'
+    'https://spying-adruino-production.up.railway.app',
     'https://web-production-39ae.up.railway.app',
 ]
-
 
 CORS_ALLOWED_ORIGINS = [
     "https://c5e0-154-121-91-43.ngrok-free.app1",
@@ -179,6 +178,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
