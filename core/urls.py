@@ -1,9 +1,11 @@
 from .views import *
 from django.urls import path
+from .views import *
+from django.urls import path
+from rest_framework.routers import DefaultRouter
 
+router = DefaultRouter()
+router.register('gps', GPSDataViewSet, basename='gps')
+router.register('data', DataViewSet, basename='data')
 
-
-urlpatterns = [
- path('gps/', GPSDataListCreateView.as_view(), name='gps'),
-    path('data/', DataListCreateView.as_view(), name='data'),
-]
+urlpatterns = router.urls
