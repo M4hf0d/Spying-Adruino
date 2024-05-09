@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import GPSData,Data
+from .models import GpsPoint,Data
 
-class GPSDataSerializer(serializers.ModelSerializer):
+class GpsPointSerializer(serializers.ModelSerializer):
     class Meta:
-        model = GPSData
+        model = GpsPoint
         # fields = ['latitude', 'longitude', 'timestamp']
         fields = '__all__'
 
