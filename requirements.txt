@@ -10,3 +10,4 @@ gunicorn
 whitenoise
 geopy==2.4.1
 django-admin-geomap==1.6
+django-grappelli
