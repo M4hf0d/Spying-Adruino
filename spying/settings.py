@@ -79,6 +79,7 @@ CORS_ALLOW_HEADERS = [
 
 DJANGO_APPS  = [
     "rest_framework",
+     'grappelli',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -90,8 +91,9 @@ DJANGO_APPS  = [
 EXTERNAL_APPS = [
     "drf_yasg",
     "corsheaders",
-    "jazzmin",
+    # "jazzmin",
     "django_filters",
+    "django_admin_geomap",
 ]
 OWN_APPS = [
     "core",
@@ -117,7 +119,7 @@ ROOT_URLCONF = 'spying.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

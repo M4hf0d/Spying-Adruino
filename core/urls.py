@@ -6,4 +6,8 @@ router = DefaultRouter()
 router.register('gps', GpsPointViewSet, basename='gps')
 router.register('data', DataViewSet, basename='data')
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('geomap/', geomap_context, name='geomap'),
+    path('map/', home, name='map' )
+] + router.urls
+
