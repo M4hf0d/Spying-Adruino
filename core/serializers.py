@@ -4,7 +4,7 @@ from .models import GpsPoint,Data, Journey
 class GpsPointSerializer(serializers.ModelSerializer):
     class Meta:
         model = GpsPoint
-        fields = ['latitude', 'longitude', 'timestamp']
+        fields = ['id','latitude', 'longitude', 'timestamp']
         # fields = '__all__'
 
 class DataSerializer(serializers.ModelSerializer):
@@ -16,7 +16,9 @@ class DataSerializer(serializers.ModelSerializer):
 
 
 class JourneySerializer(serializers.ModelSerializer):
+    gps_points = GpsPointSerializer(many=True, read_only=True)
     class Meta:
         model = Journey
         # fields = ['start_point', 'end_point', 'start_time', 'end_time', 'total_distance']
         fields = '__all__'
+        depth = 1

@@ -2,18 +2,23 @@ from rest_framework import viewsets, status
 from rest_framework.filters import OrderingFilter
 from rest_framework.response import Response
 from .models import GpsPoint, Data, Journey
-from .serializers import GpsPointSerializer, DataSerializer
+from .serializers import GpsPointSerializer, DataSerializer,JourneySerializer
 from datetime import timedelta,datetime,timezone
 from django_admin_geomap import geomap_context
 from django.shortcuts import render
 from . models import *
 
+class JourneyViewSet(viewsets.ModelViewSet):
+    queryset = Journey.objects.all()
+    serializer_class = JourneySerializer
+    filter_backends = [OrderingFilter]
+    ordering_fields = ['id', 'total_distance','start_time','average_speed','end_point']   
 
 class GpsPointViewSet(viewsets.ModelViewSet):
     queryset = GpsPoint.objects.all()
     serializer_class = GpsPointSerializer
     filter_backends = [OrderingFilter]
-    ordering_fields = ['timestamp']     
+    ordering_fields = ['timestamp' , 'id']     
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
