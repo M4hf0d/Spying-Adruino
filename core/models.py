@@ -8,6 +8,8 @@ class GpsPoint(models.Model , GeoItem):
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
     timestamp = models.DateTimeField(blank=True, null=True)
     journey = models.ForeignKey('Journey', on_delete=models.CASCADE, related_name='gps_points', blank=True, null=True)
+    speed = models.DecimalField(max_digits= 6 , decimal_places=2, null = True, blank = True)
+    heading = models.DecimalField(max_digits= 10 , decimal_places=2, null = True, blank = True)
     def __str__(self):
         return f'{self.latitude}, {self.longitude}'
     
@@ -25,7 +27,7 @@ class GpsPoint(models.Model , GeoItem):
 
     @property
     def geomap_popup_view(self):
-        return f"<strong>{self.journey.id}</strong>".format(str(self))
+        return f"<strong>{self.journey.id} <br> {self.speed} </strong>".format(str(self))
 
     @property
     def geomap_popup_edit(self):
@@ -61,6 +63,7 @@ class Journey(models.Model):
         max_speed = 0.0
         previous_point = None
         previous_time = None
+        average_speed = 0.0  # Initialize average speed
 
         for gps_point in gps_points:
             if previous_point is not None:
@@ -68,13 +71,14 @@ class Journey(models.Model):
                 total_distance += distance
                 time_difference = (gps_point.timestamp - previous_time).total_seconds() / 3600  # in hours
                 if time_difference > 0:  # avoid division by zero
-                    speed = distance / time_difference  # in km/h
+                    speed = gps_point.speed
                     max_speed = max(max_speed, speed)
+                    average_speed += speed  # Accumulate speed for average calculation
 
             previous_point = (gps_point.latitude, gps_point.longitude)
             previous_time = gps_point.timestamp
 
         self.total_distance = total_distance
         self.duration = self.end_time - self.start_time if self.end_time else timedelta(seconds=0)
-        self.average_speed = total_distance / (self.duration.total_seconds() / 3600) if self.duration.total_seconds() > 0 else 0
+        self.average_speed = average_speed / len(gps_points) if len(gps_points) > 0 else 0 
         self.max_speed = max_speed
