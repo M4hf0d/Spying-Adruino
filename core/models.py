@@ -4,8 +4,8 @@ from geopy.distance import geodesic
 from django_admin_geomap import GeoItem
 
 class GpsPoint(models.Model , GeoItem):
-    latitude = models.DecimalField(max_digits=9, decimal_places=6)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6)
+    latitude = models.DecimalField(max_digits=15, decimal_places=6)
+    longitude = models.DecimalField(max_digits=15, decimal_places=6)
     timestamp = models.DateTimeField(blank=True, null=True)
     journey = models.ForeignKey('Journey', on_delete=models.CASCADE, related_name='gps_points', blank=True, null=True)
     speed = models.DecimalField(max_digits= 6 , decimal_places=2, null = True, blank = True)
