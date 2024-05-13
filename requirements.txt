@@ -11,3 +11,4 @@ whitenoise
 geopy==2.4.1
 django-admin-geomap==1.6
 django-grappelli
+psycopg2-binary==2.9.9
