@@ -27,7 +27,7 @@ class GpsPoint(models.Model , GeoItem):
 
     @property
     def geomap_popup_view(self):
-        return f"<strong>{self.journey.id} <br> {self.speed} </strong>".format(str(self))
+        return f"<strong>{self.journey.id if self.journey else None}  <br> {self.speed} </strong>".format(str(self))
 
     @property
     def geomap_popup_edit(self):
