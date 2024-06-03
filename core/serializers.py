@@ -5,7 +5,7 @@ class GpsPointSerializer(serializers.ModelSerializer):
     class Meta:
         model = GpsPoint
         # fields = ['id','latitude', 'longitude', 'timestamp']
-        fields = '__all__'
+        exclude = ['journey']
 
 class DataSerializer(serializers.ModelSerializer):
     class Meta:
