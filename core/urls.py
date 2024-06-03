@@ -1,11 +1,13 @@
 from .views import *
 from django.urls import path
-from .views import *
-from django.urls import path
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('gps', GPSDataViewSet, basename='gps')
+router.register('gps', GpsPointViewSet, basename='gps')
 router.register('data', DataViewSet, basename='data')
+router.register('journey', JourneyViewSet, basename = 'journey')
+urlpatterns = [
+    path('geomap/', geomap_context, name='geomap'),
+    path('map/', home, name='map' )
+] + router.urls
 
-urlpatterns = router.urls
