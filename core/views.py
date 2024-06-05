@@ -1,5 +1,6 @@
 from rest_framework import viewsets, status
 from rest_framework.filters import OrderingFilter
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from .models import GpsPoint, Data, Journey
 from .serializers import GpsPointSerializer, DataSerializer,JourneySerializer
@@ -13,6 +14,17 @@ class JourneyViewSet(viewsets.ModelViewSet):
     serializer_class = JourneySerializer
     filter_backends = [OrderingFilter]
     ordering_fields = ['id', 'total_distance','start_time','average_speed','end_point']   
+
+
+class LastGpsPointView(ListAPIView):
+    serializer_class = GpsPointSerializer
+
+    def get_queryset(self):
+        # Get the last GPS point
+        last_point = GpsPoint.objects.order_by('-timestamp').first()
+
+        # Return a queryset containing only the last GPS point
+        return GpsPoint.objects.filter(id=last_point.id) if last_point else GpsPoint.objects.none()
 
 class GpsPointViewSet(viewsets.ModelViewSet):
     queryset = GpsPoint.objects.all()
