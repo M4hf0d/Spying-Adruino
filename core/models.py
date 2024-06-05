@@ -72,9 +72,9 @@ class Journey(models.Model):
                 time_difference = (gps_point.timestamp - previous_time).total_seconds() / 3600  # in hours
                 if time_difference > 0:  # avoid division by zero
                     speed = gps_point.speed
-                    max_speed = max(max_speed, speed)
-                    average_speed += speed  # Accumulate speed for average calculation
-
+                    if speed is not None:  # Check that speed is not None
+                        max_speed = max(max_speed, speed)
+                        average_speed += speed  # Accumulate speed for average calculation
             previous_point = (gps_point.latitude, gps_point.longitude)
             previous_time = gps_point.timestamp
 
